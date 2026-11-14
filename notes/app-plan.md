@@ -19,8 +19,8 @@ One page plus a Method page. Desktop layout (phones stack everything in one colu
 +-----------------------------------------------+--------------------------------+
 | 13 Mars-analog test sites                     | ATACAMA (YUNGAY)    [Leaving]  |
 | Colour by: (Overall)(Rainfall)(Temp)(Soil)    | Chile · Mars hyperarid soils   |
-|                                               | "Leaves Mars-like conditions   |
-|        world map, one dot per site            |  3.4x more often than 2001-10" |
+|                                               | <one-line verdict from data;  |
+|        world map, one dot per site            |  sketch numbers are examples> |
 |        green / amber / red / grey             | +----------------------------+ |
 |                                               | | Rare rains 2015-2017,      | |
 |        [ year slider 2001 ----o---- 2025 ]    | | microbe die-off (2018)     | |
