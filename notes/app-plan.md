@@ -65,8 +65,8 @@ Status: ✅ done · 🟡 started · ⬜ not started
 | M5 | Time-series chart per variable | Frontend | ✅ | `components/chart.js`: value line, threshold line, red excursion dots, baseline/recent shading |
 | M6 | Atacama evidence label on the chart | Frontend, Story | 🟡 (label shown; citation link still TODO in `config/sites.yaml`) | Event band from `config/sites.yaml` with citation and link |
 | M7 | Headline strip | Frontend | ✅ | `components/headline.js` (written; needs real numbers from M2) |
-| M8 | Method & limits page | Story | ⬜ | `docs/method.html`, written from config and `sites.json` |
-| M9 | NASA data list + AI declaration | Story | ⬜ | On the Method page and the project page |
+| M8 | Method & limits page | Story | ✅ (team to review wording) | `docs/method.html`, written from config and `sites.json` |
+| M9 | NASA data list + AI declaration | Story | 🟡 (on Method page; project page still to write) | On the Method page and the project page |
 | M10 | Live on GitHub Pages | ZENLIK02 | ⬜ | Link opens in an incognito window with no login |
 
 ### Should-have (add only if must-haves are done)

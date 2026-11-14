@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expiring Mars: Method &amp; data</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Expiring Mars</h1>
+        <p class="tagline">Method, data sources, limits and AI use.</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Map</a>
+      <a href="method.html" aria-current="page">Method &amp; data</a>
+    </nav>
+  </header>
+
+  <main class="card prose">
+    <h2>The question</h2>
+    <p>Space agencies and rover builders test equipment at Earth sites chosen because they resemble Mars: dry, barren and cold. Those sites were picked decades ago, and Earth's climate is changing. We ask how often each site now leaves the conditions that made it Mars-like.</p>
+
+    <h2>How we measure it</h2>
+    <ol>
+      <li><strong>Each site's own normal.</strong> For every site, variable and calendar month, we take the monthly values from <span data-fill="baseline">the baseline years</span> and set a threshold at the <span data-fill="quantile">90th</span> percentile (never less than a small minimum step above the median, so near-zero noise at hyperarid sites does not count).</li>
+      <li><strong>Excursion months.</strong> A month is an excursion when the value passes that threshold in the direction that is <em>not</em> Mars-like: wetter, warmer, or wetter soil.</li>
+      <li><strong>Decade comparison.</strong> We compare excursion months per year in <span data-fill="baseline">the baseline years</span> with <span data-fill="recent">the recent years</span>. A variable is "drifting" when the rate rises by at least <span data-fill="drift">0.5</span> months per year. A site is "drifting" if any variable drifts, and "leaving Mars-like conditions" if half or more do.</li>
+    </ol>
+    <p>Every number is shown per variable. We do not hide them inside one combined score.</p>
+
+    <h2>Does the method catch a real event?</h2>
+    <p>Yes. In 2015 and 2017 rare rains fell on the hyperarid core of the Atacama Desert, and researchers documented a die-off of the local microbes afterwards (Azua-Bustos et al., 2018). Our index flags rainfall excursions at the Yungay site in March 2015 and June 2017, with no tuning to that event. This check runs automatically with every code change.</p>
+
+    <h2>Variables</h2>
+    <table id="variables"><thead><tr><th>Variable</th><th>Unit</th><th>Why it matters for a Mars analog</th></tr></thead><tbody></tbody></table>
+
+    <h2>NASA data used</h2>
+    <table id="sources"><thead><tr><th>Dataset</th><th>Provider</th><th>Notes</th></tr></thead><tbody></tbody></table>
+    <p>Map imagery: NASA GIBS Blue Marble. Site list and coordinates are approximate and come from published descriptions of analog field sites.</p>
+
+    <h2>Limits you should know</h2>
+    <ul>
+      <li><strong>Satellites and models measure the environment, not biology.</strong> We do not measure microbes or instrument performance.</li>
+      <li><strong>Coarse resolution.</strong> The current data grid is about 50 km, far larger than a test area. Local conditions can differ.</li>
+      <li><strong>Polar sites.</strong> Satellite rainfall is unreliable beyond about 60° latitude, so polar sites rely on reanalysis data, which is model-based.</li>
+      <li><strong>Warming shows up everywhere.</strong> Air temperature excursions rose at most sites. That is real, but it means temperature alone does not single out a site.</li>
+      <li><strong>Intermittent, not only trending.</strong> Desert rain comes in rare bursts. A site can be non-Mars-like for a season and then recover.</li>
+      <li><strong>Earth is never Mars.</strong> No Earth site reproduces Mars's low gravity, thin atmosphere or radiation. We only track the properties that made each site a useful analog.</li>
+      <li><strong>Scope.</strong> This version covers Mars analogs, not Moon analogs.</li>
+    </ul>
+
+    <h2>Use of AI</h2>
+    <p>We used an AI coding assistant (Claude by Anthropic) to help write and review the data pipeline, this website and its documentation. The analysis itself uses no machine learning: every result comes from the rule-based method above, and the team checked the outputs against the source data. Any AI-generated audio or imagery in our demo video is declared on the project page.</p>
+
+    <h2>Open source</h2>
+    <p>Code and data are MIT-licensed at <a href="https://github.com/ZENLIK02/Demeter">github.com/ZENLIK02/Demeter</a>. Anyone can rerun the whole analysis with one command. This project is not affiliated with or endorsed by NASA.</p>
+  </main>
+
+  <footer class="footer"><span id="generated"></span><span>Open data from NASA. Code MIT-licensed.</span></footer>
+
+  <script type="module">
+    import { loadSummary } from "./assets/js/data.js";
+    import { escapeHtml } from "./assets/js/util.js";
+
+    const s = await loadSummary();
+    const m = s.method;
+    const fill = {
+      baseline: `${m.baseline[0]}–${m.baseline[1]}`,
+      recent: `${m.recent[0]}–${m.recent[1]}`,
+      quantile: `${Math.round(m.quantile * 100)}th`,
+      drift: String(m.drift_change_months_per_year),
+    };
+    document.querySelectorAll("[data-fill]").forEach((el) => (el.textContent = fill[el.dataset.fill]));
+    document.querySelector("#variables tbody").innerHTML = s.variables
+      .map((v) => `<tr><td>${escapeHtml(v.label)}</td><td>${escapeHtml(v.unit)}</td><td>${escapeHtml(v.why)}</td></tr>`)
+      .join("");
+    document.querySelector("#sources tbody").innerHTML = (s.data_sources || [])
+      .map((d) => `<tr><td>${d.url ? `<a href="${escapeHtml(d.url)}">${escapeHtml(d.name)}</a>` : escapeHtml(d.name)}</td><td>${escapeHtml(d.provider)}</td><td>${escapeHtml(d.notes || "")}</td></tr>`)
+      .join("");
+    document.getElementById("generated").textContent = `Data generated ${s.generated_at.slice(0, 10)}`;
+  </script>
+</body>
+</html>
