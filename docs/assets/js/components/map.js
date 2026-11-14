@@ -5,10 +5,11 @@ import { STATUS, statusFor, escapeHtml } from "../util.js";
 
 export function mount(el, { subscribe, setState }) {
   const map = L.map(el, { worldCopyJump: true, minZoom: 1, attributionControl: true }).setView([25, 0], 1.6);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
+  // NASA GIBS Blue Marble: open, no API key (https://nasa-gibs.github.io/gibs-api-docs/)
+  L.tileLayer("https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg", {
+    attribution: 'Imagery: <a href="https://earthdata.nasa.gov/gibs">NASA GIBS</a> Blue Marble',
     maxZoom: 8,
+    opacity: 0.75,
   }).addTo(map);
 
   const markers = new Map(); // site id -> circleMarker

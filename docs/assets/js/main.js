@@ -28,8 +28,15 @@ async function boot() {
   }
   for (const [mod, id] of components) mod.mount(document.getElementById(id), { getState, setState, subscribe });
 
-  const fromHash = new URLSearchParams(location.hash.slice(1)).get("site");
-  setState({ summary, selectedSiteId: summary.sites.some((s) => s.id === fromHash) ? fromHash : null });
+  const siteFromHash = () => {
+    const id = new URLSearchParams(location.hash.slice(1)).get("site");
+    return summary.sites.some((s) => s.id === id) ? id : null;
+  };
+  setState({ summary, selectedSiteId: siteFromHash() });
+  window.addEventListener("hashchange", () => {
+    const id = siteFromHash();
+    if (id && id !== getState().selectedSiteId) setState({ selectedSiteId: id });
+  });
 
   subscribe((s, patch) => {
     if ("selectedSiteId" in patch && s.selectedSiteId) history.replaceState(null, "", `#site=${s.selectedSiteId}`);

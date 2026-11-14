@@ -60,11 +60,11 @@ Status: ✅ done · 🟡 started · ⬜ not started
 |---|---|---|---|---|
 | M1 | Real data for 13 sites + kill test | Data, Science | ✅ | `python -m demeter killtest` passes (it does: Atacama 2015-03, 2017-06) |
 | M2 | Tuned index + headline number | Science | 🟡 | Thresholds in `config/analysis.yaml` give a result the team can defend (today 11/13 "leaving", mostly from temperature) |
-| M3 | World map, dots coloured by status | Frontend | 🟡 | `components/map.js`; clicking a dot selects the site |
-| M4 | Site panel: name, verdict, metrics table | Frontend | 🟡 | `components/panel.js` reads `sites.json` |
-| M5 | Time-series chart per variable | Frontend | ⬜ | `components/chart.js`: value line, threshold line, red excursion dots, baseline/recent shading |
-| M6 | Atacama evidence label on the chart | Frontend, Story | ⬜ | Event band from `config/sites.yaml` with citation and link |
-| M7 | Headline strip | Frontend | 🟡 | `components/headline.js` (written; needs real numbers from M2) |
+| M3 | World map, dots coloured by status | Frontend | ✅ | `components/map.js`; clicking a dot selects the site |
+| M4 | Site panel: name, verdict, metrics table | Frontend | ✅ | `components/panel.js` reads `sites.json` |
+| M5 | Time-series chart per variable | Frontend | ✅ | `components/chart.js`: value line, threshold line, red excursion dots, baseline/recent shading |
+| M6 | Atacama evidence label on the chart | Frontend, Story | 🟡 (label shown; citation link still TODO in `config/sites.yaml`) | Event band from `config/sites.yaml` with citation and link |
+| M7 | Headline strip | Frontend | ✅ | `components/headline.js` (written; needs real numbers from M2) |
 | M8 | Method & limits page | Story | ⬜ | `docs/method.html`, written from config and `sites.json` |
 | M9 | NASA data list + AI declaration | Story | ⬜ | On the Method page and the project page |
 | M10 | Live on GitHub Pages | ZENLIK02 | ⬜ | Link opens in an incognito window with no login |
@@ -72,8 +72,8 @@ Status: ✅ done · 🟡 started · ⬜ not started
 ### Should-have (add only if must-haves are done)
 | # | Feature | Owner | Status | Notes |
 |---|---|---|---|---|
-| S1 | Ranking table, click row to select | Frontend | ⬜ | `components/ranking.js`; covers the "identify" angle a little |
-| S2 | "Colour by" variable toggle | Frontend | 🟡 | `components/variable-toggle.js` (written) |
+| S1 | Ranking table, click row to select | Frontend | ✅ | `components/ranking.js`; covers the "identify" angle a little |
+| S2 | "Colour by" variable toggle | Frontend | ✅ | `components/variable-toggle.js` (written) |
 | S3 | Year slider recolours the map | Frontend | ⬜ | Needs per-year excursion counts (already in the series JSON) |
 | S4 | Polar-site badge ("IMERG unreliable >60°") | Frontend | ⬜ | Shows the team knows the data's limits |
 | S5 | Download CSV/JSON buttons | Frontend | ⬜ | Links to `data/raw` and `docs/data` on GitHub |
