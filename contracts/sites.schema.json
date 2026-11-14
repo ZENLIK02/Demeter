@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "demeter/sites.schema.json",
+  "title": "docs/data/sites.json - summary the web app loads first",
+  "type": "object",
+  "required": ["generated_at", "method", "headline", "variables", "sites"],
+  "properties": {
+    "generated_at": { "type": "string" },
+    "method": {
+      "type": "object",
+      "required": ["baseline", "recent", "quantile", "drift_change_months_per_year"],
+      "properties": {
+        "baseline": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "recent": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "quantile": { "type": "number" },
+        "drift_change_months_per_year": { "type": "number" }
+      }
+    },
+    "headline": {
+      "type": "object",
+      "required": ["sites_total", "sites_drifting", "sites_leaving"],
+      "properties": {
+        "sites_total": { "type": "integer" },
+        "sites_drifting": { "type": "integer", "description": "status drifting OR leaving" },
+        "sites_leaving": { "type": "integer" }
+      }
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "unit", "direction", "why", "sources"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "unit": { "type": "string" },
+          "direction": { "enum": ["higher", "lower"] },
+          "why": { "type": "string" },
+          "sources": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "provider", "url"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "provider": { "type": "string" },
+          "url": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "sites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "country", "lat", "lon", "polar", "status", "drift_share", "metrics"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "country": { "type": "string" },
+          "lat": { "type": "number" },
+          "lon": { "type": "number" },
+          "polar": { "type": "boolean" },
+          "analog_for": { "type": "string" },
+          "status": { "enum": ["stable", "drifting", "leaving", "no_data"] },
+          "drift_share": { "type": "number", "minimum": 0, "maximum": 1 },
+          "events": { "type": "array" },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["rate_baseline", "rate_recent", "change", "drifting", "source"],
+              "properties": {
+                "rate_baseline": { "type": ["number", "null"] },
+                "rate_recent": { "type": ["number", "null"] },
+                "change": { "type": ["number", "null"] },
+                "drifting": { "type": "boolean" },
+                "source": { "type": "string" },
+                "note": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

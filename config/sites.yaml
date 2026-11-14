@@ -1,0 +1,120 @@
+# Mars-analog test sites tracked by Expiring Mars.
+# Coordinates are approximate (from the team hand-off) - verify before final runs.
+# Add a site: append an entry here, then `python -m demeter run`. Nothing else changes.
+#
+# polar: true  -> |lat| > 60. IMERG rainfall is unreliable there and MODIS has
+#                 polar-night gaps, so variables can switch to a polar source.
+
+sites:
+  - id: atacama_yungay
+    name: Atacama (Yungay, hyperarid core)
+    country: Chile
+    lat: -24.1
+    lon: -70.0
+    polar: false
+    analog_for: Mars hyperarid soils, life detection
+    events:
+      - id: atacama_rains_2015_2017
+        label: Rare rains, microbe die-off documented
+        start: "2015-03"
+        end: "2017-07"
+        variable: precip
+        expect_excursion_years: [2015, 2017]   # used by the kill test
+        citation: Azua-Bustos et al., 2018
+        url: ""   # TODO(story): paste the phys.org 2018 link from the hand-off doc
+
+  - id: haughton_crater
+    name: Haughton Crater, Devon Island
+    country: Canada
+    lat: 75.4
+    lon: -89.7
+    polar: true
+    analog_for: Impact crater, polar desert
+
+  - id: mcmurdo_dry_valleys
+    name: McMurdo Dry Valleys
+    country: Antarctica
+    lat: -77.5
+    lon: 162.0
+    polar: true
+    analog_for: Cold hyperarid desert
+
+  - id: rio_tinto
+    name: Rio Tinto
+    country: Spain
+    lat: 37.7
+    lon: -6.6
+    polar: false
+    analog_for: Acidic, iron-rich waters
+
+  - id: holuhraun
+    name: Holuhraun lava field
+    country: Iceland
+    lat: 64.9
+    lon: -16.8
+    polar: true
+    analog_for: Basaltic lava terrain
+
+  - id: mdrs_hanksville
+    name: Mars Desert Research Station, Hanksville
+    country: United States
+    lat: 38.4
+    lon: -110.8
+    polar: false
+    analog_for: Crew habitat simulation, red desert
+
+  - id: hiseas_mauna_loa
+    name: HI-SEAS, Mauna Loa
+    country: United States
+    lat: 19.6
+    lon: -155.5
+    polar: false
+    analog_for: Crew habitat simulation, volcanic terrain
+
+  - id: death_valley
+    name: Death Valley
+    country: United States
+    lat: 36.5
+    lon: -116.9
+    polar: false
+    analog_for: Hot desert, evaporites
+
+  - id: mojave
+    name: Mojave Desert
+    country: United States
+    lat: 35.0
+    lon: -116.0
+    polar: false
+    analog_for: Rover field tests
+
+  - id: svalbard
+    name: Svalbard
+    country: Norway
+    lat: 79.4
+    lon: 13.3
+    polar: true
+    analog_for: Arctic Mars analog (AMASE)
+
+  - id: pilbara
+    name: Pilbara
+    country: Australia
+    lat: -21.2
+    lon: 119.4
+    polar: false
+    analog_for: Ancient life traces (stromatolites)
+
+  - id: dallol
+    name: Dallol
+    country: Ethiopia
+    lat: 14.2
+    lon: 40.3
+    polar: false
+    analog_for: Hyperacid, hypersaline hot springs
+
+  - id: tso_kar
+    name: Tso Kar, Ladakh
+    country: India
+    lat: 33.3
+    lon: 78.0
+    polar: false
+    analog_for: High-altitude cold desert

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "demeter/series.schema.json",
+  "title": "docs/data/series/<site_id>.json - monthly series for one site (loaded on click)",
+  "type": "object",
+  "required": ["site_id", "variables"],
+  "properties": {
+    "site_id": { "type": "string" },
+    "variables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source", "unit", "dates", "values", "threshold", "excursion"],
+        "properties": {
+          "source": { "type": "string" },
+          "unit": { "type": "string" },
+          "dates": { "type": "array", "items": { "type": "string", "pattern": "^\\d{4}-\\d{2}$" } },
+          "values": { "type": "array", "items": { "type": ["number", "null"] } },
+          "threshold": {
+            "type": "array",
+            "description": "threshold for each date (same length as dates); null where no baseline",
+            "items": { "type": ["number", "null"] }
+          },
+          "excursion": { "type": "array", "items": { "type": "boolean" } },
+          "excursions_per_year": {
+            "type": "object",
+            "additionalProperties": { "type": "integer" }
+          }
+        }
+      }
+    }
+  }
+}

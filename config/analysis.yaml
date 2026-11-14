@@ -1,0 +1,89 @@
+# How Expiring Mars measures "drift away from Mars-like conditions".
+# Every number the judges might ask about lives here, not in code.
+
+periods:
+  baseline: { start: 2001, end: 2010 }   # each site's own "normal"
+  recent:   { start: 2016, end: 2025 }   # compared against baseline
+
+# A month is an EXCURSION when the variable goes past the site's own baseline
+# threshold in the non-Mars-like direction (wetter, greener, warmer).
+# threshold = baseline quantile for that calendar month, but at least
+#             baseline median + min_delta (stops noise at near-zero sites).
+threshold:
+  quantile: 0.9
+
+# A variable counts as "drifting" at a site when excursions per year rise by at
+# least this much from baseline to recent.
+drift_change_months_per_year: 0.5
+
+# Site status from the share of its variables that are drifting.
+status_rules:
+  - { status: leaving,  min_share: 0.5 }   # half or more of variables drifting
+  - { status: drifting, min_share: 0.01 }  # at least one drifting
+  - { status: stable,   min_share: 0.0 }
+
+# Variables. `source` / `source_polar` pick the data source module
+# (src/demeter/sources/<name>.py). Set enabled: false until its data exists.
+# direction: which way is NOT Mars-like (Mars is dry, barren, cold).
+variables:
+  precip:
+    label: Rainfall
+    unit: mm/day
+    direction: higher
+    min_delta: 0.05
+    source: power
+    source_polar: power
+    enabled: true
+    why: Mars surfaces are hyperarid; rain changes soil chemistry and microbes.
+
+  temp:
+    label: Air temperature
+    unit: "°C"
+    direction: higher
+    min_delta: 0.5
+    source: power
+    source_polar: power
+    enabled: true
+    why: Mars is cold; warming changes freeze-thaw and ice at polar analogs.
+
+  soil_wetness:
+    label: Surface soil wetness
+    unit: "0-1"
+    direction: higher
+    min_delta: 0.02
+    source: power
+    source_polar: power
+    enabled: true
+    why: Wetter soils are less like dry Martian regolith.
+
+  # --- Higher-resolution satellite variables via Google Earth Engine -------
+  # Data role: run `python -m demeter fetch --source gee`, then flip enabled.
+  ndvi:
+    label: Greenness (NDVI)
+    unit: index
+    direction: higher
+    min_delta: 0.02
+    source: gee
+    source_polar: gee
+    enabled: false
+    why: Mars has no vegetation; greening means the site is less barren.
+
+  lst:
+    label: Land surface temperature
+    unit: "°C"
+    direction: higher
+    min_delta: 0.5
+    source: gee
+    source_polar: gee
+    enabled: false
+    why: Surface heat drives evaporation, ice loss and biology.
+
+  soil_moisture:
+    label: Soil moisture (SMAP)
+    unit: "m³/m³"
+    direction: higher
+    min_delta: 0.01
+    source: gee
+    source_polar: gee
+    enabled: false
+    why: Direct measure of soil water; SMAP starts 2015 so it has no 2001-2010 baseline.

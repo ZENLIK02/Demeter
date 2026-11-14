@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expiring Mars</title>
+  <meta name="description" content="Are Earth's Mars-analog test sites drifting away from Mars-like conditions? 25 years of NASA satellite data, 13 sites.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Expiring Mars</h1>
+        <p class="tagline">We test Mars rovers in places that look like Mars. Earth is warming. Are our Mars training grounds expiring?</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">Map</a>
+      <a href="method.html">Method &amp; data</a>
+    </nav>
+  </header>
+
+  <section id="headline" class="headline" aria-live="polite"></section>
+
+  <main class="layout">
+    <section class="map-card card">
+      <div class="card-head">
+        <h2>13 Mars-analog test sites</h2>
+        <div id="variable-toggle" class="toggle" role="group" aria-label="Colour sites by"></div>
+      </div>
+      <div id="map" class="map" role="application" aria-label="World map of Mars-analog sites"></div>
+      <div id="legend" class="legend"></div>
+    </section>
+
+    <aside id="panel" class="panel card" aria-live="polite"></aside>
+  </main>
+
+  <section class="card ranking-card">
+    <div class="card-head">
+      <h2>Which sites are drifting most?</h2>
+      <p class="muted">Excursion months per year: how often a site left its own 2001–2010 range in the non-Mars direction.</p>
+    </div>
+    <div id="ranking" class="table-wrap"></div>
+  </section>
+
+  <footer class="footer">
+    <span id="generated"></span>
+    <span>Open data from NASA. Code MIT-licensed. Not affiliated with or endorsed by NASA.</span>
+  </footer>
+
+  <!-- Pinned versions + Subresource Integrity (hashes computed 2026-11-14) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha384-NElt3Op+9NBMCYaef5HxeJmU4Xeard/Lku8ek6hoPTvYkQPh3zLIrJP7KiRocsxO" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha384-bs/nf9FbdNouRbMiFcrcZfLXYPKiPaGVGplVbv7dLGECccEXDW+S3zjqSKR5ZEaD" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/3.0.1/chartjs-plugin-annotation.min.js" integrity="sha384-oNtu+d18330MVFpltUTve1DatxCkkctlpA2AC3GulbVFOSqhHdDat3qHse/Lbuek" crossorigin="anonymous"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
