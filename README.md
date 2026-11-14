@@ -25,7 +25,7 @@ On macOS/Linux use `.venv/bin/python`.
 4. `src/demeter/export.py` writes `docs/data/*.json`, checked against `contracts/`.
 5. `docs/` is a static website served by GitHub Pages. It never contacts NASA or Earth Engine.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for roles and the dev loop.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for roles and the dev loop, and [notes/app-plan.md](notes/app-plan.md) for the app layout, features and build order.
 
 ## NASA data used
 - NASA POWER (MERRA-2 based): precipitation, air temperature, surface soil wetness

@@ -6,6 +6,7 @@ Link URLs from the original doc were not copied; titles are kept in the Links se
 ## Repo (for Claude sessions)
 - Commands, layout and roles: [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md). Python lives in `.venv` (`.venv/Scripts/python -m demeter ...`).
 - Decisions live in `config/`; lane interfaces in `contracts/`; `docs/` is the GitHub Pages site and `docs/data/` is generated, never hand-edited.
+- **App layout, feature list and ordered build plan:** [notes/app-plan.md](notes/app-plan.md). Update its Status column as features land.
 - **Read [notes/challenge-09-fit.md](notes/challenge-09-fit.md) first:** the official challenge says not to just rediscover famous analog sites, which is the main relevance risk for this plan.
 - Kill test (`python -m demeter killtest`) passes on NASA POWER data: Atacama 2015-03 and 2017-06 flagged.
 
