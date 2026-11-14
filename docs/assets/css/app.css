@@ -67,6 +67,11 @@ h1, h2, h3 { margin: 0; line-height: 1.2; }
 .leaflet-tooltip { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
 .leaflet-tooltip-top:before { border-top-color: var(--border); }
 
+/* --- year slider ---------------------------------------------------- */
+.year-slider { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
+.year-slider input { flex: 1; accent-color: var(--accent); }
+.year-slider output { min-width: 5.5em; color: var(--text); font-weight: 600; text-align: right; }
+
 /* --- toggle ---------------------------------------------------------- */
 .toggle { display: flex; flex-wrap: wrap; gap: 4px; }
 .toggle button { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 0.82rem; cursor: pointer; }

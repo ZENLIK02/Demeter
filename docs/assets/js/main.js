@@ -8,11 +8,13 @@ import * as map from "./components/map.js";
 import * as panel from "./components/panel.js";
 import * as ranking from "./components/ranking.js";
 import * as toggle from "./components/variable-toggle.js";
+import * as yearSlider from "./components/year-slider.js";
 
 const components = [
   [headline, "headline"],
   [toggle, "variable-toggle"],
   [map, "map"],
+  [yearSlider, "year-slider"],
   [panel, "panel"],
   [ranking, "ranking"],
 ];

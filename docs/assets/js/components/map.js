@@ -2,6 +2,7 @@
 /* global L */
 
 import { STATUS, statusFor, escapeHtml } from "../util.js";
+import { yearStatus, YEAR_LEGEND } from "./year-slider.js";
 
 export function mount(el, { subscribe, setState }) {
   const map = L.map(el, { worldCopyJump: true, minZoom: 1, attributionControl: true }).setView([25, 0], 1.6);
@@ -25,15 +26,16 @@ export function mount(el, { subscribe, setState }) {
         m.on("click", () => setState({ selectedSiteId: site.id }));
         markers.set(site.id, m);
       }
-      const status = STATUS[statusFor(site, s.variable, drift)];
+      const byYear = s.year != null && s.yearCounts;
+      const status = STATUS[byYear ? yearStatus(site, s) : statusFor(site, s.variable, drift)];
       const selected = site.id === s.selectedSiteId;
       m.setStyle({ color: selected ? "#ffffff" : status.hex, fillColor: status.hex });
       m.setRadius(selected ? 11 : 8);
       if (selected) m.bringToFront();
     }
     if (legend) {
-      legend.innerHTML = Object.values(STATUS)
-        .map((st) => `<span><i style="background:${st.hex}"></i>${st.label}</span>`)
+      legend.innerHTML = Object.entries(STATUS)
+        .map(([key, st]) => `<span><i style="background:${st.hex}"></i>${s.year != null ? YEAR_LEGEND[key] : st.label}</span>`)
         .join("");
     }
   }

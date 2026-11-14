@@ -5,6 +5,8 @@ const state = {
   summary: null,        // docs/data/sites.json
   selectedSiteId: null, // site the panel shows
   variable: "all",      // "all" = colour by site status, else a variable id
+  year: null,           // null = decade comparison; a number = colour the map by that year
+  yearCounts: null,     // { siteId: { variableId: { year: excursion months } } }, set by year-slider
 };
 
 const listeners = new Set();

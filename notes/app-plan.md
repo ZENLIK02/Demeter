@@ -74,7 +74,7 @@ Status: ✅ done · 🟡 started · ⬜ not started
 |---|---|---|---|---|
 | S1 | Ranking table, click row to select | Frontend | ✅ | `components/ranking.js`; covers the "identify" angle a little |
 | S2 | "Colour by" variable toggle | Frontend | ✅ | `components/variable-toggle.js` (written) |
-| S3 | Year slider recolours the map | Frontend | ⬜ | Needs per-year excursion counts (already in the series JSON) |
+| S3 | Year slider recolours the map | Frontend | ✅ | Needs per-year excursion counts (already in the series JSON) |
 | S4 | Polar-site badge ("IMERG unreliable >60°") | Frontend | ⬜ | Shows the team knows the data's limits |
 | S5 | Download CSV/JSON buttons | Frontend | ⬜ | Links to `data/raw` and `docs/data` on GitHub |
 | S6 | Higher-resolution data via Earth Engine (NDVI, LST, IMERG) | Data | ⬜ | Needs an Earth Engine account; turn on in `config/analysis.yaml` |
