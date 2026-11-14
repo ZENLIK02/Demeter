@@ -1,0 +1,528 @@
+{
+ "generated_at": "2026-11-14T08:05:56Z",
+ "method": {
+  "baseline": [
+   2001,
+   2010
+  ],
+  "recent": [
+   2016,
+   2025
+  ],
+  "quantile": 0.9,
+  "drift_change_months_per_year": 0.5
+ },
+ "headline": {
+  "sites_total": 13,
+  "sites_drifting": 13,
+  "sites_leaving": 11
+ },
+ "variables": [
+  {
+   "id": "precip",
+   "label": "Rainfall",
+   "unit": "mm/day",
+   "direction": "higher",
+   "why": "Mars surfaces are hyperarid; rain changes soil chemistry and microbes.",
+   "sources": [
+    "power"
+   ]
+  },
+  {
+   "id": "temp",
+   "label": "Air temperature",
+   "unit": "°C",
+   "direction": "higher",
+   "why": "Mars is cold; warming changes freeze-thaw and ice at polar analogs.",
+   "sources": [
+    "power"
+   ]
+  },
+  {
+   "id": "soil_wetness",
+   "label": "Surface soil wetness",
+   "unit": "0-1",
+   "direction": "higher",
+   "why": "Wetter soils are less like dry Martian regolith.",
+   "sources": [
+    "power"
+   ]
+  }
+ ],
+ "data_sources": [
+  {
+   "id": "power",
+   "name": "NASA POWER monthly point data (MERRA-2 based)",
+   "provider": "NASA Langley Research Center",
+   "url": "https://power.larc.nasa.gov/",
+   "notes": "Precipitation (PRECTOTCORR), 2 m air temperature (T2M), surface soil wetness (GWETTOP). ~0.5 deg grid."
+  }
+ ],
+ "sites": [
+  {
+   "id": "atacama_yungay",
+   "name": "Atacama (Yungay, hyperarid core)",
+   "country": "Chile",
+   "lat": -24.1,
+   "lon": -70.0,
+   "polar": false,
+   "analog_for": "Mars hyperarid soils, life detection",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [
+    {
+     "id": "atacama_rains_2015_2017",
+     "label": "Rare rains, microbe die-off documented",
+     "start": "2015-03",
+     "end": "2017-07",
+     "variable": "precip",
+     "citation": "Azua-Bustos et al., 2018",
+     "url": ""
+    }
+   ],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 0.5,
+     "rate_recent": 0.9,
+     "change": 0.4,
+     "drifting": false,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.1,
+     "rate_recent": 6.9,
+     "change": 5.8,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.0,
+     "rate_recent": 3.3,
+     "change": 2.3,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "haughton_crater",
+   "name": "Haughton Crater, Devon Island",
+   "country": "Canada",
+   "lat": 75.4,
+   "lon": -89.7,
+   "polar": true,
+   "analog_for": "Impact crater, polar desert",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 2.1,
+     "change": 0.9,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.0,
+     "change": -0.2,
+     "drifting": false,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.1,
+     "rate_recent": 2.2,
+     "change": 1.1,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "mcmurdo_dry_valleys",
+   "name": "McMurdo Dry Valleys",
+   "country": "Antarctica",
+   "lat": -77.5,
+   "lon": 162.0,
+   "polar": true,
+   "analog_for": "Cold hyperarid desert",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 2.8,
+     "change": 1.6,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 2.8,
+     "change": 1.6,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 0.0,
+     "rate_recent": 0.0,
+     "change": 0.0,
+     "drifting": false,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "rio_tinto",
+   "name": "Rio Tinto",
+   "country": "Spain",
+   "lat": 37.7,
+   "lon": -6.6,
+   "polar": false,
+   "analog_for": "Acidic, iron-rich waters",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.9,
+     "change": 0.7,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 3.7,
+     "change": 2.5,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.5,
+     "change": 0.3,
+     "drifting": false,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "holuhraun",
+   "name": "Holuhraun lava field",
+   "country": "Iceland",
+   "lat": 64.9,
+   "lon": -16.8,
+   "polar": true,
+   "analog_for": "Basaltic lava terrain",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.6,
+     "change": 0.4,
+     "drifting": false,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.1,
+     "rate_recent": 1.9,
+     "change": 0.8,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 0.9,
+     "rate_recent": 2.3,
+     "change": 1.4,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "mdrs_hanksville",
+   "name": "Mars Desert Research Station, Hanksville",
+   "country": "United States",
+   "lat": 38.4,
+   "lon": -110.8,
+   "polar": false,
+   "analog_for": "Crew habitat simulation, red desert",
+   "status": "drifting",
+   "drift_share": 0.333,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.4,
+     "change": 0.2,
+     "drifting": false,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 4.1,
+     "change": 2.9,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.2,
+     "rate_recent": 0.9,
+     "change": -0.3,
+     "drifting": false,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "hiseas_mauna_loa",
+   "name": "HI-SEAS, Mauna Loa",
+   "country": "United States",
+   "lat": 19.6,
+   "lon": -155.5,
+   "polar": false,
+   "analog_for": "Crew habitat simulation, volcanic terrain",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 0.9,
+     "change": -0.3,
+     "drifting": false,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 0.8,
+     "rate_recent": 5.3,
+     "change": 4.5,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.0,
+     "rate_recent": 2.0,
+     "change": 1.0,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "death_valley",
+   "name": "Death Valley",
+   "country": "United States",
+   "lat": 36.5,
+   "lon": -116.9,
+   "polar": false,
+   "analog_for": "Hot desert, evaporites",
+   "status": "leaving",
+   "drift_share": 1.0,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.8,
+     "change": 0.6,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 4.6,
+     "change": 3.4,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.2,
+     "rate_recent": 2.0,
+     "change": 0.8,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "mojave",
+   "name": "Mojave Desert",
+   "country": "United States",
+   "lat": 35.0,
+   "lon": -116.0,
+   "polar": false,
+   "analog_for": "Rover field tests",
+   "status": "leaving",
+   "drift_share": 1.0,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 3.3,
+     "change": 2.1,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 3.8,
+     "change": 2.6,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.1,
+     "rate_recent": 2.5,
+     "change": 1.4,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "svalbard",
+   "name": "Svalbard",
+   "country": "Norway",
+   "lat": 79.4,
+   "lon": 13.3,
+   "polar": true,
+   "analog_for": "Arctic Mars analog (AMASE)",
+   "status": "leaving",
+   "drift_share": 1.0,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 2.9,
+     "change": 1.7,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 4.7,
+     "change": 3.5,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 0.9,
+     "rate_recent": 1.6,
+     "change": 0.7,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "pilbara",
+   "name": "Pilbara",
+   "country": "Australia",
+   "lat": -21.2,
+   "lon": 119.4,
+   "polar": false,
+   "analog_for": "Ancient life traces (stromatolites)",
+   "status": "drifting",
+   "drift_share": 0.333,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.2,
+     "change": 0.0,
+     "drifting": false,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 3.3,
+     "change": 2.1,
+     "drifting": true,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.1,
+     "rate_recent": 0.8,
+     "change": -0.3,
+     "drifting": false,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "dallol",
+   "name": "Dallol",
+   "country": "Ethiopia",
+   "lat": 14.2,
+   "lon": 40.3,
+   "polar": false,
+   "analog_for": "Hyperacid, hypersaline hot springs",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 5.3,
+     "change": 4.1,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.1,
+     "rate_recent": 1.0,
+     "change": -0.1,
+     "drifting": false,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 1.2,
+     "rate_recent": 7.5,
+     "change": 6.3,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  },
+  {
+   "id": "tso_kar",
+   "name": "Tso Kar, Ladakh",
+   "country": "India",
+   "lat": 33.3,
+   "lon": 78.0,
+   "polar": false,
+   "analog_for": "High-altitude cold desert",
+   "status": "leaving",
+   "drift_share": 0.667,
+   "events": [],
+   "metrics": {
+    "precip": {
+     "rate_baseline": 1.2,
+     "rate_recent": 8.5,
+     "change": 7.3,
+     "drifting": true,
+     "source": "power"
+    },
+    "temp": {
+     "rate_baseline": 1.2,
+     "rate_recent": 1.4,
+     "change": 0.2,
+     "drifting": false,
+     "source": "power"
+    },
+    "soil_wetness": {
+     "rate_baseline": 0.9,
+     "rate_recent": 11.5,
+     "change": 10.6,
+     "drifting": true,
+     "source": "power"
+    }
+   }
+  }
+ ]
+}
